@@ -7,20 +7,20 @@ Write a function called sum() that takes in two numbers as arguments and then re
 
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSum() function below and check the console to see if the test passes.*/
 
-// Write your code here
-// function sum(a, b) { //eslint-disable-line
-//   var total = a + b;
-//   var arr = [];
-//   arr.push(total);
-//   var msg = 'The sum of ' + a + ' and ' + b + ' is ' + total + '.';
-//   arr.push(msg);
+//Write your code here
+function sum(a, b) { //eslint-disable-line
+  var total = a + b;
+  var arr = [];
+  arr.push(total);
+  var msg = 'The sum of ' + a + ' and ' + b + ' is ' + total + '.';
+  arr.push(msg);
 
-//   return arr;
-//   // return [a + b, 'The sum of ' + a + ' and ' + b + ' is ' + total + '.'];
-// }
+  return arr;
+  // return [a + b, 'The sum of ' + a + ' and ' + b + ' is ' + total + '.'];
+}
 
 // Here is the test for sum(); uncomment it to run it
-// testSum(4, 7);
+testSum(4, 7);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -37,30 +37,66 @@ function multiply(a, b){ //eslint-disable-line
   var product = a * b;//define calculation of product
   var multArr = [];//create empty array to push product into
   multArr.push(product); // push product into empty array
-  var multMsg = 'The product of '+ a + ' and ' + b + ' is ' + product;//write message
+  var multMsg = 'The product of '+ a + ' and ' + b + ' is ' + product + '.';//write message
   multArr.push(multMsg);//push message into array
 
   return multArr; //return array, this return the product and the message
 }
 
 // Here is the test for multiply(); uncomment it to run it
-// testMultiply(5,9);
+testMultiply(5, 9)
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
 /////////////////////////////////////
 /* Problem 3
-Write a function called sumAndMultiply() that takes in three numbers as separate arguments and returns an array where the first element is the sum of those three numbers, the second element is the product of those three numbers,  and the third and fourth elements are strings that EXACTLY follow this example and use the values that were input into the function:
+Write a function called sumAndMultiply() that takes in three numbers as separate arguments and returns 
+an array where the first element is the sum of those three numbers, 
+the second element is the product of those three numbers,  
+and the third and fourth elements are strings that EXACTLY follow this example and 
+use the values that were input into the function:
 
 Third element: "4 and 7 and 5 sum to 16."
 Fourth element: "The product of 4 and 7 and 5 is 140."
 
-IMPORTANT DETAIL: You may not use the arithmetic operators + and * in this function. To do addition, use your sum() function, and to do multiplication, use your multiply() function that you've already created. You're going to have to be resourceful to figure out how to do this.
+IMPORTANT DETAIL: You may not use the arithmetic operators + and * in this function. 
+To do addition, use your sum() function, and to do multiplication, use your multiply() 
+function that you've already created. You're going to have to be resourceful to figure out how to do this.
 
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSumAndMultiply() function and see if the test passes.*/
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
+  //SUM A B and C
+  //create empty array for  values
+  allValues = [];
+  //use sum to add a and b and define variable, retrieve only first element of sum function
+  var sumAB = sum(a, b)[0];
+  //define variable for (a+b)+c
+  var sumABC = sum(sumAB, c)[0];
+  //push sumAB into empty array allValues
+  allValues.push(sumABC);
+
+  //PRODUCT OF AB and C
+  //create variable productAB, add index [0] to retrieve only first element of multiply function
+  var productAB = multiply(a, b)[0];
+  //create variable where productAB is multiplied by c
+  var productABC = multiply(productAB, c)[0];
+  //push productABC into array allValues
+  allValues.push(productABC);
+
+  // ADD STRING OF TEXT THAT DESCRIBES THE SUM OF VALUES ABC
+  msgSumABC = a + ' and ' + b + ' and ' + c + ' sum to ' + sumABC + '.';
+  //push string into allValues
+  allValues.push(msgSumABC);
+
+  //ADD STRING OF TEXT THAT DESCRIBES THE PRODUCT OF VALUES ABC
+  msgProdABC = 'The product of '+ a + ' and ' + b + ' and ' + c + ' is ' + productABC + '.';
+  //push string into allValues
+  allValues.push(msgProdABC); 
+
+
+  return allValues;
 
 }
 
